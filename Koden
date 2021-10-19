@@ -1,0 +1,72 @@
+using System;
+
+namespace Spelupg
+{
+      class Program
+
+      {
+          static void Main(string[] args)
+
+          {
+              Random random = new Random();
+              int randNumb;
+
+            //Introduktion till spelet
+            Console.WriteLine("Hej och välkommen till spelet");
+            Console.WriteLine("Du ska försöka gissa det tal jag slumpmässigt valt");
+            Console.WriteLine("Talet kommer vara ett heltal mellan 1 och 100");
+            Console.WriteLine("Nu börjar spelet!");
+
+            randNumb = random.Next(1, 100);
+            int tries = 1;
+
+            //Loopen som kommer köras tills användaren gissar rätt
+            while(true){
+                Console.Write("Gissa ett heltal mellan 1 och 100: ");
+                string usrGuess = Console.ReadLine();
+                int numbGuess;
+
+                //Om användaren inte skriver in ett heltal
+                if(!int.TryParse(usrGuess, out numbGuess)){
+                    Console.WriteLine("Det är inte ett heltal, försök igen!");
+                    continue;
+                }
+
+                if(numbGuess == randNumb){
+                    //Detta sker vid vinst
+
+                    break;
+
+                }
+                //Om användaren gissar för högt
+
+                else if(numbGuess > randNumb){
+                    Console.WriteLine("Fel svar, din gissning är för hög!");
+
+                }
+                //Om användaren gissar för lågt
+
+                else{
+                    Console.WriteLine("Fel svar, din gissning är för låg!");
+
+                }
+
+                tries++;
+
+
+                }
+
+                //Detta visas när man vinner
+                Console.WriteLine("Grattis! Du har gissat rätt, du behövde ");
+                Console.WriteLine(tries);
+                Console.WriteLine(" försök för att klara det!");
+
+
+            }
+
+
+
+
+          }
+
+      }
